@@ -1,5 +1,14 @@
 # Cognitive Workspace - Proof of Concept Implementation
 
+[中文版](README_CN.md) | English
+
+[![GitHub stars](https://img.shields.io/github/stars/tao-hpu/cognitive-workspace?style=social)](https://github.com/tao-hpu/cognitive-workspace/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/tao-hpu/cognitive-workspace?style=social)](https://github.com/tao-hpu/cognitive-workspace/network)
+[![GitHub issues](https://img.shields.io/github/issues/tao-hpu/cognitive-workspace)](https://github.com/tao-hpu/cognitive-workspace/issues)
+[![GitHub license](https://img.shields.io/github/license/tao-hpu/cognitive-workspace)](https://github.com/tao-hpu/cognitive-workspace/blob/main/LICENSE)
+[![Python](https://img.shields.io/badge/python-3.7%2B-blue)](https://www.python.org/)
+[![arXiv](https://img.shields.io/badge/arXiv-2025.xxxxx-b31b1b.svg)](https://arxiv.org/abs/2025.xxxxx)
+
 ## Quick Start
 
 ### 1. Install Dependencies
