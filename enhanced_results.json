@@ -1,0 +1,211 @@
+{
+  "experiments": [
+    {
+      "name": "10_round_conversation",
+      "rounds": 10,
+      "cw_reuse_rates": [
+        0.5,
+        0.5714285714285714,
+        0.5666666666666667,
+        0.5853658536585366,
+        0.58,
+        0.5901639344262295,
+        0.5797101449275363,
+        0.5769230769230769,
+        0.5747126436781609,
+        0.5858585858585859
+      ],
+      "rag_reuse_rates": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cw_ops_counts": [
+        10,
+        21,
+        30,
+        41,
+        50,
+        61,
+        69,
+        78,
+        87,
+        99
+      ],
+      "rag_ops_counts": [
+        3,
+        6,
+        9,
+        12,
+        15,
+        18,
+        21,
+        24,
+        27,
+        30
+      ],
+      "cw_avg_reuse": 0.5710829477567365,
+      "cw_std_reuse": 0.024617143505427933,
+      "cw_total_ops": 546,
+      "rag_total_ops": 165,
+      "ops_ratio": 3.309090909090909
+    },
+    {
+      "name": "multi_hop_reasoning",
+      "rounds": 10,
+      "cw_reuse_rates": [
+        0.5871559633027523,
+        0.5882352941176471,
+        0.5826771653543307,
+        0.583941605839416,
+        0.5878378378378378,
+        0.5886075949367089,
+        0.5892857142857143,
+        0.5898876404494382,
+        0.5925925925925926,
+        0.592964824120603
+      ],
+      "rag_reuse_rates": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cw_ops_counts": [
+        109,
+        119,
+        127,
+        137,
+        148,
+        158,
+        168,
+        178,
+        189,
+        199
+      ],
+      "rag_ops_counts": [
+        33,
+        36,
+        39,
+        42,
+        45,
+        48,
+        51,
+        54,
+        57,
+        60
+      ],
+      "cw_avg_reuse": 0.5883186232837041,
+      "cw_std_reuse": 0.0030969143717831525,
+      "cw_total_ops": 1532,
+      "rag_total_ops": 465,
+      "ops_ratio": 3.2946236559139783
+    },
+    {
+      "name": "conflict_resolution",
+      "rounds": 6,
+      "cw_reuse_rates": [
+        0.5952380952380952,
+        0.5954545454545455,
+        0.5938864628820961,
+        0.5975103734439834,
+        0.6007905138339921,
+        0.6022727272727273
+      ],
+      "rag_reuse_rates": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cw_ops_counts": [
+        210,
+        220,
+        229,
+        241,
+        253,
+        264
+      ],
+      "rag_ops_counts": [
+        63,
+        66,
+        69,
+        72,
+        75,
+        78
+      ],
+      "cw_avg_reuse": 0.5975254530209066,
+      "cw_std_reuse": 0.003053969420665115,
+      "cw_total_ops": 1417,
+      "rag_total_ops": 423,
+      "ops_ratio": 3.3498817966903074
+    }
+  ],
+  "statistics": {
+    "10_round_conversation": {
+      "t_statistic": 69.59576129913077,
+      "p_value": 1.3192511231185516e-13,
+      "wilcoxon_statistic": 0.0,
+      "wilcoxon_p_value": 0.001953125,
+      "cohens_d": 23.198587099710252,
+      "significance": "显著"
+    },
+    "multi_hop_reasoning": {
+      "t_statistic": 569.907868920147,
+      "p_value": 8.02748901365483e-22,
+      "wilcoxon_statistic": 0.0,
+      "wilcoxon_p_value": 0.001953125,
+      "cohens_d": 189.969289640049,
+      "significance": "显著"
+    },
+    "conflict_resolution": {
+      "t_statistic": 437.4986606611527,
+      "p_value": 1.1841205341306798e-12,
+      "wilcoxon_statistic": 0.0,
+      "wilcoxon_p_value": 0.03125,
+      "cohens_d": 195.65534906069013,
+      "significance": "显著"
+    }
+  },
+  "efficiency_analysis": {
+    "10_round_conversation": {
+      "average_reuse_rate": 0.5710829477567365,
+      "operations_ratio": 3.309090909090909,
+      "extra_operations_ratio": 2.309090909090909,
+      "net_efficiency_gain": 0.17258001168472806,
+      "cumulative_operations_saved": 17.13248843270209,
+      "break_even_round": 10
+    },
+    "multi_hop_reasoning": {
+      "average_reuse_rate": 0.5883186232837041,
+      "operations_ratio": 3.2946236559139783,
+      "extra_operations_ratio": 2.2946236559139783,
+      "net_efficiency_gain": 0.17856929492618956,
+      "cumulative_operations_saved": 194.14514568362233,
+      "break_even_round": 10
+    },
+    "conflict_resolution": {
+      "average_reuse_rate": 0.5975254530209066,
+      "operations_ratio": 3.3498817966903074,
+      "extra_operations_ratio": 2.3498817966903074,
+      "net_efficiency_gain": 0.17837210065479428,
+      "cumulative_operations_saved": 225.86462124190268,
+      "break_even_round": 6
+    }
+  }
+}

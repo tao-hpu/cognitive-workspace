@@ -1,0 +1,48 @@
+# LaTeX temporary files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.nav
+*.snm
+*.vrb
+*.dvi
+*.ps
+
+# PDF output (uncomment if you don't want to track PDFs)
+# *.pdf
+
+# BibTeX
+*.bib.bak
+*.bib.sav
+
+# LaTeX editors
+*.backup
+*.bak
+*~
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
