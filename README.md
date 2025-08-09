@@ -1,6 +1,6 @@
 # Cognitive Workspace - Proof of Concept Implementation
 
-[中文版](README_CN.md) | English
+[中文版](README_CN.md) | English | [📚 Wiki](https://github.com/tao-hpu/cognitive-workspace/wiki)
 
 [![GitHub stars](https://img.shields.io/github/stars/tao-hpu/cognitive-workspace?style=social)](https://github.com/tao-hpu/cognitive-workspace/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/tao-hpu/cognitive-workspace?style=social)](https://github.com/tao-hpu/cognitive-workspace/network)
