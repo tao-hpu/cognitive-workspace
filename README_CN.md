@@ -236,11 +236,13 @@ A: 可以！代码支持：
 如果您使用此代码，请引用：
 
 ```bibtex
-@article{cognitive-workspace-2025,
+@article{an2025cognitive,
   title={Cognitive Workspace: Towards Functional Infinite Context Through Active Memory Management},
   author={Tao An},
-  journal={arXiv preprint arXiv:2508.13171},
-  year={2025}
+  year={2025},
+  eprint={2508.13171},
+  archivePrefix={arXiv},
+  primaryClass={cs.AI}
 }
 ```
 
