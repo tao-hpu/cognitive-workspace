@@ -239,7 +239,7 @@ If you use this code, please cite:
 @article{cognitive-workspace-2025,
   title={Cognitive Workspace: Towards Functional Infinite Context Through Active Memory Management},
   author={Tao An},
-  journal={arXiv preprint arXiv:2025.xxxxx},
+  journal={arXiv preprint arXiv:2508.13171},
   year={2025}
 }
 ```
