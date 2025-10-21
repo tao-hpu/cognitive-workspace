@@ -207,7 +207,7 @@ A: Yes! The code supports:
 
 1. **Add longer-term tests (20+ rounds)**
    ```python
-   # Modify question list in enhanced_experiment.py
+   # Modify question list in cognitive_workspace_enhanced.py
    extended_questions = [...20 questions...]
    ```
 

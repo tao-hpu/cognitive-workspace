@@ -207,7 +207,7 @@ A: 可以！代码支持：
 
 1. **添加更长期测试（20+轮）**
    ```python
-   # 修改enhanced_experiment.py中的问题列表
+   # 修改cognitive_workspace_enhanced.py中的问题列表
    extended_questions = [...20个问题...]
    ```
 
