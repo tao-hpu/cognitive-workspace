@@ -186,7 +186,7 @@ Cohen's d: 195.7（超大效应）
 A: 因为我们证明的是架构行为差异，不是生成质量。即使用规则模拟，主动vs被动、有状态vs无状态的差异仍然明显。
 
 ### Q: 如何在论文中引用这个代码？
-A: 
+A: 在LaTeX中使用以下格式：
 ```latex
 Code available at: \url{https://github.com/tao-hpu/cognitive-workspace}
 ```
