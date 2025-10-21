@@ -203,11 +203,63 @@ A: Yes! The code supports:
 - Local models (Ollama, llama.cpp)
 - Any service providing chat/completion interfaces
 
+## Troubleshooting
+
+### API Connection Errors
+
+**Problem**: `openai.error.AuthenticationError` or connection timeout
+
+**Solutions**:
+- Verify your API key is correct in `.env`
+- Check `OPENAI_API_BASE` URL format (should end with `/v1`)
+- For Azure OpenAI, ensure you're using the correct endpoint format
+- Test connection: `curl -H "Authorization: Bearer $OPENAI_API_KEY" $OPENAI_API_BASE/models`
+
+### Import Errors for Optional Dependencies
+
+**Problem**: `ModuleNotFoundError: No module named 'sentence_transformers'`
+
+**Solutions**:
+- Install missing dependencies: `pip install sentence-transformers`
+- For full functionality: `pip install openai python-dotenv sentence-transformers scipy matplotlib`
+- Check Python version (requires 3.7+)
+
+### Results Differ from Expected Values
+
+**Problem**: Reuse rates or metrics don't match documentation
+
+**Solutions**:
+- **Simulation mode** (no API key): Results are deterministic but simplified
+- **Full mode** (with API key): Results vary slightly due to LLM randomness
+  - Set temperature=0 in code for more consistent results
+  - Run multiple trials for statistical validity
+- Ensure you're comparing same experiment (basic vs enhanced)
+
+### Memory or Performance Issues
+
+**Problem**: Script runs slowly or uses too much memory
+
+**Solutions**:
+- Start with basic experiment first: `python cognitive_workspace_poc.py`
+- Reduce number of documents in test data
+- For local models, ensure adequate RAM (8GB+ recommended)
+- Check if background processes are consuming resources
+
+### Results Files Not Generated
+
+**Problem**: Missing `.json` or `.png` output files
+
+**Solutions**:
+- Check for errors in console output
+- Ensure write permissions in current directory
+- For visualization: verify matplotlib is installed
+- Run with: `python cognitive_workspace_enhanced.py 2>&1 | tee output.log`
+
 ## Extension Suggestions
 
 1. **Add longer-term tests (20+ rounds)**
    ```python
-   # Modify question list in enhanced_experiment.py
+   # Modify question list in cognitive_workspace_enhanced.py
    extended_questions = [...20 questions...]
    ```
 
@@ -230,6 +282,52 @@ A: Yes! The code supports:
    for doc_count in [10, 100, 1000]:
        test_scalability(doc_count)
    ```
+
+## Contributing
+
+We welcome contributions to improve this proof-of-concept implementation! Here's how you can help:
+
+### Ways to Contribute
+
+- **Bug Reports**: Open an issue describing the problem with steps to reproduce
+- **Feature Suggestions**: Propose new experiments or architectural improvements
+- **Code Improvements**: Submit pull requests for bug fixes or enhancements
+- **Documentation**: Improve README, add code comments, or create tutorials
+- **Testing**: Add test cases or validate results on different platforms
+
+### Contribution Guidelines
+
+1. **Fork the repository** and create your branch from `main`
+2. **Make your changes** with clear, descriptive commit messages
+3. **Test your changes** thoroughly (run both basic and enhanced experiments)
+4. **Update documentation** if you change functionality
+5. **Submit a pull request** with a clear description of your changes
+
+### Code of Conduct
+
+- Be respectful and constructive in discussions
+- Focus on the technical merits of contributions
+- Help maintain this as a research and educational resource
+
+## Contact & Support
+
+### Getting Help
+
+- **Issues**: For bug reports and feature requests, use [GitHub Issues](https://github.com/tao-hpu/cognitive-workspace/issues)
+- **Discussions**: For questions and general discussion, start a [GitHub Discussion](https://github.com/tao-hpu/cognitive-workspace/discussions)
+- **Documentation**: Check the [Wiki](https://github.com/tao-hpu/cognitive-workspace/wiki) for additional resources
+
+### Research Collaboration
+
+If you're interested in collaborating on research related to Cognitive Workspace or have academic questions about the paper:
+
+- **Author**: Tao An
+- **Paper**: [arXiv:2508.13171](https://arxiv.org/abs/2508.13171)
+- For research inquiries, please reference the paper for contact information
+
+### Reporting Security Issues
+
+If you discover a security vulnerability, please report it privately rather than opening a public issue.
 
 ## Citation
 

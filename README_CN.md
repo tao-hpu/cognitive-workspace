@@ -7,7 +7,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/tao-hpu/cognitive-workspace)](https://github.com/tao-hpu/cognitive-workspace/issues)
 [![GitHub license](https://img.shields.io/github/license/tao-hpu/cognitive-workspace)](https://github.com/tao-hpu/cognitive-workspace/blob/main/LICENSE)
 [![Python](https://img.shields.io/badge/python-3.7%2B-blue)](https://www.python.org/)
-[![arXiv](https://img.shields.io/badge/arXiv-2025.xxxxx-b31b1b.svg)](https://arxiv.org/abs/2508.13171)
+[![arXiv](https://img.shields.io/badge/arXiv-2508.13171-b31b1b.svg)](https://arxiv.org/abs/2508.13171)
 
 ## 快速开始
 
@@ -203,11 +203,63 @@ A: 可以！代码支持：
 - 本地模型（Ollama、llama.cpp）
 - 任何提供chat/completion接口的服务
 
+## 故障排除
+
+### API连接错误
+
+**问题**: `openai.error.AuthenticationError` 或连接超时
+
+**解决方案**:
+- 检查 `.env` 中的API密钥是否正确
+- 检查 `OPENAI_API_BASE` URL格式（应以 `/v1` 结尾）
+- 对于Azure OpenAI，确保使用正确的端点格式
+- 测试连接: `curl -H "Authorization: Bearer $OPENAI_API_KEY" $OPENAI_API_BASE/models`
+
+### 可选依赖的导入错误
+
+**问题**: `ModuleNotFoundError: No module named 'sentence_transformers'`
+
+**解决方案**:
+- 安装缺失的依赖: `pip install sentence-transformers`
+- 完整功能安装: `pip install openai python-dotenv sentence-transformers scipy matplotlib`
+- 检查Python版本（需要3.7+）
+
+### 结果与预期值不符
+
+**问题**: 复用率或指标与文档不匹配
+
+**解决方案**:
+- **模拟模式**（无API密钥）: 结果是确定性的但简化的
+- **完整模式**（有API密钥）: 由于LLM的随机性，结果会略有不同
+  - 在代码中设置temperature=0以获得更一致的结果
+  - 运行多次试验以获得统计有效性
+- 确保比较的是同一个实验（基础vs增强）
+
+### 内存或性能问题
+
+**问题**: 脚本运行缓慢或使用过多内存
+
+**解决方案**:
+- 首先运行基础实验: `python cognitive_workspace_poc.py`
+- 减少测试数据中的文档数量
+- 对于本地模型，确保有足够的RAM（建议8GB+）
+- 检查后台进程是否占用资源
+
+### 结果文件未生成
+
+**问题**: 缺少 `.json` 或 `.png` 输出文件
+
+**解决方案**:
+- 检查控制台输出中的错误
+- 确保当前目录有写入权限
+- 对于可视化: 验证已安装matplotlib
+- 使用以下命令运行: `python cognitive_workspace_enhanced.py 2>&1 | tee output.log`
+
 ## 扩展建议
 
 1. **添加更长期测试（20+轮）**
    ```python
-   # 修改enhanced_experiment.py中的问题列表
+   # 修改cognitive_workspace_enhanced.py中的问题列表
    extended_questions = [...20个问题...]
    ```
 
@@ -230,6 +282,52 @@ A: 可以！代码支持：
    for doc_count in [10, 100, 1000]:
        test_scalability(doc_count)
    ```
+
+## 贡献
+
+我们欢迎贡献来改进这个概念验证实现！以下是您可以提供帮助的方式：
+
+### 贡献方式
+
+- **Bug报告**: 提交issue描述问题和复现步骤
+- **功能建议**: 提出新的实验或架构改进
+- **代码改进**: 提交pull request修复bug或增强功能
+- **文档**: 改进README、添加代码注释或创建教程
+- **测试**: 添加测试用例或在不同平台上验证结果
+
+### 贡献指南
+
+1. **Fork本仓库** 并从 `main` 分支创建您的分支
+2. **进行修改** 并使用清晰、描述性的提交信息
+3. **彻底测试您的更改**（运行基础和增强实验）
+4. **更新文档** 如果您更改了功能
+5. **提交pull request** 并清晰描述您的更改
+
+### 行为准则
+
+- 在讨论中保持尊重和建设性
+- 关注贡献的技术价值
+- 帮助维护这个研究和教育资源
+
+## 联系与支持
+
+### 获取帮助
+
+- **Issues**: 对于bug报告和功能请求，使用 [GitHub Issues](https://github.com/tao-hpu/cognitive-workspace/issues)
+- **讨论**: 对于问题和一般性讨论，发起 [GitHub Discussion](https://github.com/tao-hpu/cognitive-workspace/discussions)
+- **文档**: 查看 [Wiki](https://github.com/tao-hpu/cognitive-workspace/wiki) 获取更多资源
+
+### 研究合作
+
+如果您有兴趣在认知工作空间相关研究上合作，或对论文有学术性问题：
+
+- **作者**: Tao An
+- **论文**: [arXiv:2508.13171](https://arxiv.org/abs/2508.13171)
+- 研究咨询请参考论文中的联系信息
+
+### 报告安全问题
+
+如果您发现安全漏洞，请私下报告而不是公开issue。
 
 ## 引用
 
