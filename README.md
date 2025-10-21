@@ -186,7 +186,7 @@ This code supports the following paper arguments:
 A: Because we prove architectural behavioral differences, not generation quality. Even with rule simulation, the differences between active vs passive, stateful vs stateless are still obvious.
 
 ### Q: How to cite this code in papers?
-A: 
+A: Use the following format in your LaTeX:
 ```latex
 Code available at: \url{https://github.com/tao-hpu/cognitive-workspace}
 ```
