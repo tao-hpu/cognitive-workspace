@@ -9,7 +9,35 @@
 [![Python](https://img.shields.io/badge/python-3.7%2B-blue)](https://www.python.org/)
 [![arXiv](https://img.shields.io/badge/arXiv-2508.13171-b31b1b.svg)](https://arxiv.org/abs/2508.13171)
 
-## Quick Start
+---
+
+## 📋 Table of Contents
+
+- [Quick Start](#quick-start)
+  - [1. Install Dependencies](#1-install-dependencies)
+  - [2. Environment Configuration](#2-environment-configuration)
+  - [3. Run Experiments](#3-run-experiments)
+- [Operation Modes](#operation-modes)
+- [Experiment Content](#experiment-content)
+- [Output Files](#output-files)
+- [Key Metrics Explanation](#key-metrics-explanation)
+- [System Architecture](#system-architecture)
+- [Experiment Screenshots](#experiment-screenshots)
+- [Paper Support](#paper-support)
+- [FAQ](#faq)
+- [Troubleshooting](#troubleshooting)
+- [Extension Suggestions](#extension-suggestions)
+- [Contributing](#contributing)
+- [Contact & Support](#contact--support)
+- [Citation](#citation)
+- [Acknowledgments](#acknowledgments)
+- [Star History](#star-history)
+- [Contributors](#contributors)
+- [License](#license)
+
+---
+
+## 🚀 Quick Start
 
 ### 1. Install Dependencies
 
@@ -57,7 +85,7 @@ python cognitive_workspace_poc.py
 python cognitive_workspace_enhanced.py
 ```
 
-## Operation Modes
+## 🎯 Operation Modes
 
 ### Mode 1: Full Mode (Recommended)
 Requires OpenAI API key, demonstrates real LLM behavioral differences:
@@ -77,7 +105,7 @@ Uses local models like Ollama:
 - No API costs
 - Performance depends on local hardware
 
-## Experiment Content
+## 🔬 Experiment Content
 
 ### Experiment 1: Single-turn Task Processing
 Compares Cognitive Workspace vs traditional RAG on single complex questions:
@@ -125,14 +153,14 @@ Cohen's d: 195.7 (extremely large effect)
 Operations saved: 226
 ```
 
-## Output Files
+## 📁 Output Files
 
 - `cognitive_workspace_results.json`: Basic experiment results
 - `enhanced_results.json`: Enhanced experiment detailed results
 - `cognitive_workspace_analysis.png`: Experiment visualization charts
 - `.env.example`: Environment variable template (if .env doesn't exist)
 
-## Key Metrics Explanation
+## 📊 Key Metrics Explanation
 
 ### Memory Reuse Rate (Measured Data)
 - **Basic experiment (4 rounds)**: Average 54.5%, reuse starts from round 1
@@ -164,7 +192,76 @@ Net efficiency = Reuse rate / (1 + Extra operation ratio)
 - **Cognitive Workspace**: Dynamically tracks task completion and information sufficiency
 - **Traditional RAG**: No confidence concept
 
-## Paper Support
+## 🏗️ System Architecture
+
+The Cognitive Workspace implements a hierarchical memory architecture that mimics human cognitive processes:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│              User Query Interface                       │
+└────────────────┬────────────────────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────────────────────┐
+│         Metacognitive Controller                        │
+│  • Task Decomposition                                   │
+│  • Confidence Tracking                                  │
+│  • Information Gap Analysis                             │
+└────────────────┬────────────────────────────────────────┘
+                 │
+     ┌───────────┴───────────┐
+     ▼                       ▼
+┌─────────────┐      ┌──────────────────┐
+│  Immediate  │      │  Active Memory   │
+│   Buffer    │◄────►│   Prediction     │
+│  (Recent)   │      │   & Preparation  │
+└──────┬──────┘      └──────────────────┘
+       │
+       ▼
+┌─────────────┐
+│   Working   │
+│   Buffer    │
+│ (Relevant)  │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│  Episodic   │
+│   Buffer    │
+│(Long-term)  │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────────────────────────────────────────────────┐
+│         External Knowledge Base (RAG)                   │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Key Differences from Traditional RAG:**
+- **Stateful**: Maintains context across multiple queries
+- **Predictive**: Proactively prepares information before it's needed
+- **Hierarchical**: Three-tier memory buffer system with intelligent promotion
+- **Metacognitive**: Self-aware of information gaps and task completion
+
+> **Note**: You can add your own architecture diagrams by placing images in an `assets/` folder and referencing them here.
+
+## 📸 Experiment Screenshots
+
+When you run the experiments, you'll see outputs similar to these:
+
+### Multi-turn Dialogue Comparison
+The experiments generate detailed comparison charts showing memory reuse rates across different scenarios.
+
+### Statistical Analysis Visualization
+`cognitive_workspace_analysis.png` contains visualizations of:
+- Memory reuse rate trends across dialogue rounds
+- Operation count comparisons (Cognitive Workspace vs RAG)
+- Statistical significance indicators (Cohen's d effect sizes)
+- Net efficiency gains accounting for overhead
+
+> **Tip**: After running `cognitive_workspace_enhanced.py`, check the generated `cognitive_workspace_analysis.png` file for detailed visual results.
+
+## 📄 Paper Support
 
 This code supports the following paper arguments:
 
@@ -180,30 +277,42 @@ This code supports the following paper arguments:
 4. **Metacognitive control enhances intelligence**
    - Code proof: Confidence tracking, information gap identification
 
-## FAQ
+## ❓ FAQ
 
-### Q: Why can simulation mode also prove the points?
+<details>
+<summary><b>Q: Why can simulation mode also prove the points?</b></summary>
+
 A: Because we prove architectural behavioral differences, not generation quality. Even with rule simulation, the differences between active vs passive, stateful vs stateless are still obvious.
+</details>
 
-### Q: How to cite this code in papers?
+<details>
+<summary><b>Q: How to cite this code in papers?</b></summary>
+
 A: Use the following format in your LaTeX:
 ```latex
 Code available at: \url{https://github.com/tao-hpu/cognitive-workspace}
 ```
+</details>
 
-### Q: How many tokens/API calls are needed?
+<details>
+<summary><b>Q: How many tokens/API calls are needed?</b></summary>
+
 A: Full experiments require approximately:
 - Single-turn experiment: ~10 API calls
 - Multi-turn experiment: ~20 API calls
 - Total cost: < $0.05 (using GPT-3.5-turbo)
+</details>
 
-### Q: Can other LLMs be used?
+<details>
+<summary><b>Q: Can other LLMs be used?</b></summary>
+
 A: Yes! The code supports:
 - OpenAI-compatible APIs (by modifying OPENAI_API_BASE)
 - Local models (Ollama, llama.cpp)
 - Any service providing chat/completion interfaces
+</details>
 
-## Troubleshooting
+## 🔧 Troubleshooting
 
 ### API Connection Errors
 
@@ -255,7 +364,7 @@ A: Yes! The code supports:
 - For visualization: verify matplotlib is installed
 - Run with: `python cognitive_workspace_enhanced.py 2>&1 | tee output.log`
 
-## Extension Suggestions
+## 💡 Extension Suggestions
 
 1. **Add longer-term tests (20+ rounds)**
    ```python
@@ -283,7 +392,7 @@ A: Yes! The code supports:
        test_scalability(doc_count)
    ```
 
-## Contributing
+## 🤝 Contributing
 
 We welcome contributions to improve this proof-of-concept implementation! Here's how you can help:
 
@@ -309,7 +418,7 @@ We welcome contributions to improve this proof-of-concept implementation! Here's
 - Focus on the technical merits of contributions
 - Help maintain this as a research and educational resource
 
-## Contact & Support
+## 📬 Contact & Support
 
 ### Getting Help
 
@@ -329,7 +438,7 @@ If you're interested in collaborating on research related to Cognitive Workspace
 
 If you discover a security vulnerability, please report it privately rather than opening a public issue.
 
-## Citation
+## 📖 Citation
 
 If you use this code, please cite:
 
@@ -344,6 +453,53 @@ If you use this code, please cite:
 }
 ```
 
-## License
+## 🙏 Acknowledgments
+
+This proof-of-concept implementation was developed to demonstrate the architectural principles described in the Cognitive Workspace paper. We'd like to thank:
+
+- **Research Community**: For valuable feedback on the paper and implementation
+- **Open Source Contributors**: All contributors who have helped improve this codebase
+- **Users & Testers**: Everyone who has experimented with this POC and provided insights
+- **Reviewers**: For constructive comments that improved both the paper and code quality
+
+Special thanks to the broader AI/ML research community for inspiring discussions on memory architectures, metacognition, and efficient LLM systems.
+
+### Built With
+
+This project leverages excellent open-source tools:
+- **OpenAI API** - LLM integration
+- **NumPy** - Numerical computing
+- **Sentence Transformers** - Vector embeddings (optional)
+- **SciPy & Matplotlib** - Statistical analysis and visualization (optional)
+
+## ⭐ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=tao-hpu/cognitive-workspace&type=Date)](https://star-history.com/#tao-hpu/cognitive-workspace&Date)
+
+## 👥 Contributors
+
+Thanks to all the contributors who have helped improve this project!
+
+[![Contributors](https://contrib.rocks/image?repo=tao-hpu/cognitive-workspace)](https://github.com/tao-hpu/cognitive-workspace/graphs/contributors)
+
+### How to Contribute
+
+We welcome contributions! See the [Contributing](#-contributing) section above for guidelines.
+
+---
+
+## 📜 License
 
 MIT License - Free to use, modify and distribute
+
+---
+
+<div align="center">
+
+**Made with ❤️ for the AI Research Community**
+
+If you find this project useful, please consider giving it a ⭐!
+
+[Report Bug](https://github.com/tao-hpu/cognitive-workspace/issues) · [Request Feature](https://github.com/tao-hpu/cognitive-workspace/issues) · [View Paper](https://arxiv.org/abs/2508.13171)
+
+</div>
